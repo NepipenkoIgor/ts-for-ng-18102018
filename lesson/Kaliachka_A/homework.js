@@ -31,3 +31,17 @@ function summator(...args) {
     });
     return sum;
 }
+/**
+ * Method, which find all unique elements of input parameters
+ * @param {(T)[]} args - input parameters
+ * @returns {(T)[]} - array of all unique elements
+ */
+function getUnique(...args) {
+    const result = [];
+    args.forEach((arg) => {
+        if (args.filter((a) => a === arg).length === 1) {
+            result.push(arg);
+        }
+    });
+    return result;
+}
