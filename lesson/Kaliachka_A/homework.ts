@@ -24,7 +24,7 @@ function summator(...args: (string | number)[]): number {
     let sum: number = 0;
     args.forEach((arg: string | number) => {
             if (typeof arg === 'string') {
-                sum += parseInt(arg) || 0;
+                sum += +arg || 0;
             } else {
                 sum += arg;
             }
@@ -33,20 +33,21 @@ function summator(...args: (string | number)[]): number {
     return sum;
 }
 
-
 /**
  * Method, which find all unique elements of input parameters
  * @param {(T)[]} args - input parameters
  * @returns {(T)[]} - array of all unique elements
  */
 function getUnique<T>(...args: T[]): T[] {
-    const result: T[] = [];
+/*    const result: T[] = [];
     args.forEach(
         (arg: T) => {
             if (args.filter((a: T) => a === arg).length === 1) {
                 result.push(arg);
             }
         }
-    );
-    return result;
+    );*/
+    return Array.from(new Set<T>(args));
 }
+
+console.log(summator('a', 1, 11, '21', '2f'));
