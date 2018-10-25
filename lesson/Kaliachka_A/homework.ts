@@ -56,28 +56,44 @@ function getUnique<T>(...args: T[]): T[] {
  *  @param {number} rowSize - element per column parameter
  *  @returns {T[][]} - matrix, with elements of input array
  */
-function toMatrix<T>(data: T[], rowSize: number): void {
-    const colSize: number = Math.round(data.length / rowSize);
+function toMatrix<T>(data: T[], rowSize: number): T[][] {
+    const colSize: number = Math.ceil(data.length / rowSize);
     const matrix: T[][] = Array(colSize);
     for (let i: number = 0; i < matrix.length; i++) {
         matrix[i] = (function (_i: number): T[] {
             const rowArray: T[] = Array(rowSize);
             for (let j: number = 0; j < rowSize; j++) {
-                rowArray[j] = data[_i + _i + j];
+                rowArray[j] = data[_i * rowSize + j];
             }
             return rowArray;
         })(i);
     }
+    return matrix;
 }
 
-// toMatrix<string | number | boolean>([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 6);
-// console.log(isInArray([1, 2, 3, '4'], 2, 3, 4));
-// console.log(isInArray([1, 2, 3, '4'], 2, 3, '4'));
+/* Is in array tests */
+// console.log(isInArray([1, 2, 3, '4'], 2, 3, 4)); //expect false
+// console.log(isInArray([1, 2, 3, '4'], 2, 3, '4')); // expect true
 
-// console.log(summator(1, 2, 3, 4, 5));
-// console.log(summator(1, 2, 3, 4, '5'));
-// console.log(summator('1', 2, 3, 4, '5'));
-// console.log(summator('a', 2, 3, 4, '5'));
-// console.log(summator('a', 2, 3, 4, '2f'));
+/* Summator tests */
+// console.log(summator(1, 2, 3, 4, 5)); // expect 15
+// console.log(summator(1, 2, 3, 4, '5')); // expect 15
+// console.log(summator('1', 2, 3, 4, '5')); // expect 15
+// console.log(summator('a', 2, 3, 4, '5')); // expect 14
+// console.log(summator('a', 2, 3, 4, '2f')); // expect 9
 
-// console.log(getUnique<string|number>(1, 2, 3, 4, 5, 1, 1, 1, 1, 2, '2', '2'));
+/* Get unique tests */
+// console.log(getUnique(1, 2, 3, 4, 5, 1, 1, 1, 1, 2, '2', '2')); // expect [1,2,3,4,5,'2']
+
+/* To Matrix tests */
+// console.log(toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 2));
+// expect [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ], [ 8, 'a' ], [ 'b', true ] ]
+
+// console.log(toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 10));
+// expect [ [ 1, 2, 3, 4, 5, 6, 8, 'a', 'b', true ] ]
+
+// console.log(toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true, false, 'c', 15], 10));
+// expect [ [ 1, 2, 3, 4, 5, 6, 8, 'a', 'b', true ], [false, 'c', 15, undef*7]]
+
+
+
