@@ -53,7 +53,7 @@ console.log(inArray([3, 2], '3', 2)); // false
 function summator(...args: primitive[]): number {
     return args.reduce(
         (res: number, item: primitive) => {
-            const itemNumber : number = Number(item) ;
+            const itemNumber: number = Number(item) ;
             return res + (isNaN(itemNumber) ? 0 : itemNumber);
         }, 0
     );
