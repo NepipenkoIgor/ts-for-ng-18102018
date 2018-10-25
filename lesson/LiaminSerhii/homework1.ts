@@ -1,22 +1,4 @@
-/*
-Используйте то что увидели на занятии
-Никаких any , обобщите аргументы на примитивы
-
-3)
-  Написать функцию getUnique(arr), которая принимает аргументом неограниченое число аргументов,
-  и возвращает массив уникальных элементов. Аргумент не должен изменяться.
-  Порядок элементов результирующего массива должен совпадать с порядком,
-  в котором они встречаются в оригинальной структуре.
-
-4)
- Дописать функцию toMatrix(data, rowSize), которая принимает аргументом массив и число,
- возвращает новый массив. Число показывает количество элементов в подмассивах,
- элементы подмассивов беруться из массива data.
- Оригинальный массив не должен быть изменен.
-*/
-// number, string, boolean, symbol, null, or undefined
-
-type primitive = number | string | boolean;
+type TPrimitive = number | string | boolean;
 
 /*
 1)
@@ -26,8 +8,8 @@ type primitive = number | string | boolean;
 */
 
 function inArray(
-    arr: primitive[],
-    ...items: primitive[]
+    arr: TPrimitive[],
+    ...items: TPrimitive[]
 ): boolean {
     for (const item of items) {
         if (!(arr.indexOf(item) > -1)) {
@@ -50,13 +32,39 @@ console.log(inArray([3, 2], '3', 2)); // false
  Аргументы могут быть либо строкового либо числового типа. Количество их не ограничено
 */
 
-function summator(...args: primitive[]): number {
+function summator(...args: TPrimitive[]): number {
     return args.reduce(
-        (res: number, item: primitive) => {
-            const itemNumber: number = Number(item) ;
+        (res: number, item: TPrimitive) => {
+            const itemNumber: number = Number(item);
+
             return res + (isNaN(itemNumber) ? 0 : itemNumber);
         }, 0
     );
 }
 
-console.log(summator('1', '5', 2));
+console.log(summator('1', '5ll', 2)); // 3
+
+/*
+3)
+  Написать функцию getUnique(arr), которая принимает аргументом неограниченое число аргументов,
+  и возвращает массив уникальных элементов. Аргумент не должен изменяться.
+  Порядок элементов результирующего массива должен совпадать с порядком,
+  в котором они встречаются в оригинальной структуре.
+*/
+
+function getUnique(...args: TPrimitive[]): TPrimitive[] {
+    return [... new Set(args)];
+}
+
+console.log(getUnique(1, 2, 2, 3, 4, 4));
+
+/*
+4)
+ Дописать функцию toMatrix(data, rowSize), которая принимает аргументом массив и число,
+ возвращает новый массив. Число показывает количество элементов в подмассивах,
+ элементы подмассивов беруться из массива data.
+ Оригинальный массив не должен быть изменен.
+*/
+function toMatrix(data: [], rowSize: number): [] {
+    return [];
+}
