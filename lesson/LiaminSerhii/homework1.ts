@@ -16,6 +16,8 @@
 */
 // number, string, boolean, symbol, null, or undefined
 
+type primitive = number | string | boolean;
+
 /*
 1)
   Написать функцию inArray(), которая начиная со второго принимает переменное количество аргументов.
@@ -24,8 +26,8 @@
 */
 
 function inArray(
-    arr: (number | string | boolean)[],
-    ...items: (number | string | boolean)[]
+    arr: primitive[],
+    ...items: primitive[]
 ): boolean {
     for (const item of items) {
         if (!(arr.indexOf(item) > -1)) {
@@ -48,6 +50,13 @@ console.log(inArray([3, 2], '3', 2)); // false
  Аргументы могут быть либо строкового либо числового типа. Количество их не ограничено
 */
 
-function summator<T extends number | string>(...args: T[]): T {
-    return args.reduce((accumulator: T, currentValue: T) => accumulator + currentValue, 0);
+function summator(...args: primitive[]): number {
+    return args.reduce(
+        (res: number, item: primitive) => {
+            const itemNumber : number = Number(item) ;
+            return res + (isNaN(itemNumber) ? 0 : itemNumber);
+        }, 0
+    );
 }
+
+console.log(summator('1', '5', 2));
