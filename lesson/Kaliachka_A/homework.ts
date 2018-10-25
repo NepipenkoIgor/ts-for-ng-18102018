@@ -50,6 +50,27 @@ function getUnique<T>(...args: T[]): T[] {
     return Array.from(new Set<T>(args));
 }
 
+/**
+ *  Method, which generate matrix with rowSize param items per column
+ *  @param {(T)[]} data - input array, which should be separate into matrix
+ *  @param {number} rowSize - element per column parameter
+ *  @returns {T[][]} - matrix, with elements of input array
+ */
+function toMatrix<T>(data: T[], rowSize: number): void {
+    const colSize: number = Math.round(data.length / rowSize);
+    const matrix: T[][] = Array(colSize);
+    for (let i: number = 0; i < matrix.length; i++) {
+        matrix[i] = (function (_i: number): T[] {
+            const rowArray: T[] = Array(rowSize);
+            for (let j: number = 0; j < rowSize; j++) {
+                rowArray[j] = data[_i + _i + j];
+            }
+            return rowArray;
+        })(i);
+    }
+}
+
+// toMatrix<string | number | boolean>([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 6);
 // console.log(isInArray([1, 2, 3, '4'], 2, 3, 4));
 // console.log(isInArray([1, 2, 3, '4'], 2, 3, '4'));
 
