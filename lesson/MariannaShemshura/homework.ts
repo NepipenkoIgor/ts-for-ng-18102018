@@ -3,8 +3,8 @@ type TPrimitiveArray = TPrimitive[];
 
 // 1)
 
-function isInArray(arr: (number | string)[], ...items: (number | string)[]): boolean {
-        return items.filter((item: number | string) => {
+function isInArray(arr: TPrimitive[], ...items: TPrimitive[]): boolean {
+        return items.filter((item: TPrimitive) => {
             return !(arr.indexOf(item) > -1);
         }).length === 0;
 }

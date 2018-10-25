@@ -1,59 +1,71 @@
 // 1.
+type snb = number | string;
 
-function isInArray(arr: Array<number | string>, ...args: Array<number | string>): boolean{
-  
-  args.forEach(item => {
-    if (arr.indexOf(item) === -1) {
-      return false;
-    }
-  });
+function isInArray(arr: snb[], ...args: snb[]): boolean {
 
-  return true
+    args.forEach(item => {
+        if (arr.indexOf(item) === -1) {
+            return false;
+        }
+    });
+
+    return true;
 }
 
 // 2.
 
-function summator(...args: Array<number | string>): number {
-  let result: number = 0;
-  
-  args.forEach((item) => {
-    if (typeof item === 'string') {
-      result += parseFloat(item);
-    } else {
-      result += item;
-    }
-  })
+function summator(...args: snb[]): number {
+    return args.reduce((sum: number, currentEl: snb) => {
+        if (typeof currentEl === 'string') {
+            const num: number = Number(currentEl);
+            if (!Number.isNaN(num)) {
+                sum += num;
+            }
+        } else {
+            sum += currentEl;
+        }
+        return sum;
+    }, 0);
 
-  return result;
+
+    // args.forEach((item) => {
+    //   if (typeof item === 'string') {
+    //     result += parseFloat(item);
+    //   } else {
+    //     result += item;
+    //   }
+    // })
+
+    // return result;
 }
 
 // 3.
 
-function getUnique(...args: Array<number | string>): Array<number | string> {
-  let result: Array<number | string> = [];
+function getUnique(...args: (number | string)[]): (number | string)[] {
+    const result: (number | string)[] = [];
 
-  args.forEach((item) => {
-    if (args.filter(elem => item === elem).length === 1) {
-      result.push(item);
-    }
-  })
+    args.forEach((item) => {
+        if (args.filter(elem => item === elem).length === 1) {
+            result.push(item);
+        }
+    });
 
-  return result;
+    return result;
 }
 
 // 4.
 
-function toMatrix(data: Array<number | string>, rowSize: number): Array<Array<number | string>> {
-  let resulMatrix: Array<Array<number | string>> = [];
+function toMatrix(data: (number | string)[], rowSize: number): (number | string)[][] {
+    const resulMatrix: (number | string)[][] = [];
 
-  data.forEach((item, index) => {
-    resulMatrix[index] = [];
+    data.forEach((item, index) => {
+        resulMatrix[index] = [];
 
-    for(let i = 0; i < rowSize; i++) {
-      resulMatrix[index][i] = item;
-    }
+        for (let i = 0; i < rowSize; i++) {
+            resulMatrix[index][i] = item;
+        }
 
-  })
+    });
 
-  return resulMatrix;
+    return resulMatrix;
 }

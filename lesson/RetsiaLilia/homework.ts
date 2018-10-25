@@ -1,59 +1,59 @@
 function isInArray(dataArray: (number|string)[], ...items: (number|string)[]): boolean {
-   
+
     let itemsCountInArray = 0;
 
-    for (var i=1; i < items.length; i++) {
+    for (let i = 1; i < items.length; i++) {
         dataArray.forEach((item: number|string) => {
             if (items[i] === item) {
-                itemsCountInArray++                
+                itemsCountInArray++;
             }
-        });    
+        });
 
         if (itemsCountInArray !== i) {
             return false;
         }
-    }      
-    return true   
+    }
+    return true;
 }
 
 function summator( ...items: (string|number)[]): number {
-    let total : number = 0;
-    for (var i=0; i < items.length; i++) {
+    let total: number = 0;
+    for (let i = 0; i < items.length; i++) {
         let number = Number(items[i]);
-        if (isNaN(number)) {
-            number = 0
+        if (Number.isNaN(number)) {
+            number = 0;
         }
-        total += number
-    }  
+        total += number;
+    }
 
-    return total
+    return total;
 }
 
 type TPrimitiveTypes = number | string |  boolean | null | undefined ;
 
 type TPrimitiveArray = TPrimitiveTypes[];
 
-function getUniqueArr( ...items: TPrimitiveArray) : TPrimitiveArray {
-    let uniqueArray : TPrimitiveArray = [];
-    for (var i=0; i < items.length; i++) {
+function getUniqueArr( ...items: TPrimitiveArray): TPrimitiveArray {
+    const uniqueArray: TPrimitiveArray = [];
+    for (let i = 0; i < items.length; i++) {
         if (uniqueArray.indexOf(items[i]) < 0) {
-            uniqueArray.push(items[i]); 
+            uniqueArray.push(items[i]);
             }
-    } 
+    }
 
     return uniqueArray;
 }
-   
+
 
 type TStrNum = string | number;
-type TStrNumArray = TStrNum[]
-type TStrNumMultiLevelArray = TStrNum[][]
+type TStrNumArray = TStrNum[];
+type TStrNumMultiLevelArray = TStrNum[][];
 
-function toMatrixa(data: TStrNumArray, rowSize: number) : TStrNumMultiLevelArray {    
-    let result  : TStrNumMultiLevelArray = [];
+function toMatrixa(data: TStrNumArray, rowSize: number): TStrNumMultiLevelArray {
+    const result: TStrNumMultiLevelArray = [];
     for (let i: number = 0; i < Math.ceil(data.length / rowSize); i++) {
-        let arr : TStrNumArray = data.slice((i * rowSize), (i * rowSize) + rowSize);
+        const arr: TStrNumArray = data.slice((i * rowSize), (i * rowSize) + rowSize);
         result.push(arr);
     }
-    return result
+    return result;
 }

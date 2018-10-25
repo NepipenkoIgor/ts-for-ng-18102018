@@ -138,3 +138,137 @@
 // average('1', 's');
 // average('1', 1);
 // average('s', 2, 1);
+
+// const sum: IUser = 1 + 2;
+// console.log(sum);
+interface IPointX {
+    readonly x: number;
+
+}
+
+interface IPointY {
+    readonly y: number;
+
+}
+
+// class Point implements IPointX {
+//
+//     public constructor(
+//         public readonly x: number,
+//         private readonly y: number,
+//         protected readonly z: number,
+//     ) {
+//     }
+//
+//     public sum(): number {
+//         return this.x + this.y;
+//     }
+// }
+//
+// class CustomPoint extends Point {
+//     public constructor(
+//         public readonly x1: number,
+//         public readonly y1: number,
+//         public readonly z1: number,
+//     ) {
+//         super(x1, y1, z1);
+//     }
+// }
+//
+// const point: Point = new Point(10, 11, 11);
+//
+// point.
+
+// class Singleton {
+//     private static instance: Singleton;
+//
+//     private constructor() {
+//
+//     }
+//
+//     public static getInstance(): Singleton {
+//         if (!Singleton.instance) {
+//             Singleton.instance = new Singleton();
+//         }
+//         return Singleton.instance;
+//     }
+// }
+//
+// const inst1 =  Singleton.getInstance();
+// const inst2 =  Singleton.getInstance();
+
+// abstract class AbstractPoint {
+//
+//
+//     public abstract y: number;
+//     private _x: number = 1;
+//
+//     public abstract sum(): number;
+//
+//     public getX(): number {
+//         return this.x;
+//     }
+//
+//     public get x(): number {
+//         return this._x * 2;
+//     }
+//
+//     public set x(value: number) {
+//         this._x = value;
+//     }
+//
+// }
+//
+// class Point extends AbstractPoint {
+//     public y: number = 10;
+//
+//     public sum(): number {
+//         return 2;
+//     }
+//
+// }
+//
+//
+// class Point1 extends AbstractPoint {
+//     public y: number = 10;
+//
+//     public sum(): number {
+//         return 100;
+//     }
+// }
+//
+//
+// const p1 = new AbstractPoint();
+
+// tslint:disable-next-line
+function logMethod(_target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+    const originalDesc: Function = descriptor.value;
+    return {
+        ...descriptor,
+        // tslint:disable-next-line
+        value: (...args: any[]) => {
+            // tslint:disable-next-line
+            const b = args.map((v: any) => JSON.stringify(v))
+                .join();
+            // tslint:disable-next-line
+            const result: any = originalDesc(...args);
+            const r: string = JSON.stringify(result);
+            // tslint:disable-next-line
+            console.log(`Call: ${key}(${b}) => ${r}`);
+            return result;
+        }
+    };
+
+}
+
+class MathLib {
+    @logMethod
+    public areaOfCircle(r: number): number {
+        return Math.PI * r ** 2;
+    }
+}
+
+let m: MathLib = new MathLib();
+m.areaOfCircle(10);
+m.areaOfCircle(200);
+m.areaOfCircle(2);

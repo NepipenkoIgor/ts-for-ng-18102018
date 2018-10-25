@@ -1,4 +1,3 @@
-
 type ns = number | string;
 
 
@@ -16,9 +15,14 @@ function isInArray(arr: ns[], ...arrArg: ns[]): boolean {
 function summator(...argArr: number[]): number;
 function summator(...argArr: string[]): string;
 function summator(...argArr: ns[]): ns {
-    let result: ns;
+    let result: ns = 0;
     for (let i: number = 0; i < argArr.length; i++) {
-        result += argArr[i];
+        const el: ns = argArr[i];
+        if (typeof el === 'string') {
+            result += Number(el);
+        } else {
+            result += el;
+        }
     }
     return result;
 }
@@ -27,7 +31,7 @@ function summator(...argArr: ns[]): ns {
 // 3
 
 function getUnique(...arr: ns[]): ns[] {
-    return new Set(arr);
+    return Array.from(new Set(arr));
 }
 
 
