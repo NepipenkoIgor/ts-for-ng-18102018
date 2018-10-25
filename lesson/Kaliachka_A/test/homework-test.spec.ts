@@ -37,33 +37,34 @@ describe('Homework 2018 10 25', () => {
 
     describe('Unique items method', () => {
         it('empty case', () => {
-            expect(HomeWorkOctober25.getUnique()).to.equal([]);
+            expect(HomeWorkOctober25.getUnique().toString()).to.equal([].toString());
         });
         it('simple mixed test', () => {
-            expect(HomeWorkOctober25.getUnique<string | number>(1, 2, 3, 4, 5, 1, 1, 1, 1, 2, '2', '2'))
-                .to.equal([1, 2, 3, 4, 5, '2']);
+            expect(HomeWorkOctober25.getUnique<string | number>(1, 2, 3, 4, 5, 1, 1, 1, 1, 2, '2', '2').toString())
+                .to.equal([1, 2, 3, 4, 5, '2'].toString());
         });
     });
 
     describe('Array to Matrix method', () => {
         it('empty array case', () => {
-            expect(HomeWorkOctober25.toMatrix([], 1)).to.equal([]);
+            expect(HomeWorkOctober25.toMatrix([], 1).toString()).to.equal([].toString());
         });
         it('simple case with aliquot array length and parameter', () => {
-            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 2))
+            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 2).toString())
                 .to
-                .equal([[1, 2], [3, 4], [5, 6], [8, 'a'], ['b', true]]);
+                .equal([[1, 2], [3, 4], [5, 6], [8, 'a'], ['b', true]].toString());
         });
         it('more complex case with non-aliquot array length and parameter and param > array length', () => {
-            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 10))
+            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true], 10).toString())
                 .to
-                .equal([[1, 2, 3, 4, 5, 6, 8, 'a', 'b', true]]);
+                .equal([[1, 2, 3, 4, 5, 6, 8, 'a', 'b', true]].toString());
         });
         it('just a complex case', () => {
-            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true, false, 'c', 15], 10))
+            expect(HomeWorkOctober25.toMatrix([1, 2, 3, 4, 5, 6, 8, 'a', 'b', true, false, 'c', 15], 10).toString())
                 .to
                 .equal([[1, 2, 3, 4, 5, 6, 8, 'a', 'b', true],
-                    [false, 'c', 15, undefined, undefined, undefined, undefined, undefined, undefined, undefined]]);
+                    [false, 'c', 15, undefined, undefined, undefined, undefined, undefined, undefined, undefined]]
+                    .toString());
         });
     });
 });
