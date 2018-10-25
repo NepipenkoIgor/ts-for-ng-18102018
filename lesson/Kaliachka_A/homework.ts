@@ -39,15 +39,24 @@ function summator(...args: (string | number)[]): number {
  * @returns {(T)[]} - array of all unique elements
  */
 function getUnique<T>(...args: T[]): T[] {
-/*    const result: T[] = [];
-    args.forEach(
-        (arg: T) => {
-            if (args.filter((a: T) => a === arg).length === 1) {
-                result.push(arg);
+    /*    const result: T[] = [];
+        args.forEach(
+            (arg: T) => {
+                if (args.filter((a: T) => a === arg).length === 1) {
+                    result.push(arg);
+                }
             }
-        }
-    );*/
+        );*/
     return Array.from(new Set<T>(args));
 }
 
-console.log(summator('a', 1, 11, '21', '2f'));
+// console.log(isInArray([1, 2, 3, '4'], 2, 3, 4));
+// console.log(isInArray([1, 2, 3, '4'], 2, 3, '4'));
+
+// console.log(summator(1, 2, 3, 4, 5));
+// console.log(summator(1, 2, 3, 4, '5'));
+// console.log(summator('1', 2, 3, 4, '5'));
+// console.log(summator('a', 2, 3, 4, '5'));
+// console.log(summator('a', 2, 3, 4, '2f'));
+
+// console.log(getUnique<string|number>(1, 2, 3, 4, 5, 1, 1, 1, 1, 2, '2', '2'));
