@@ -37,7 +37,10 @@ function summator(...args: TPrimitive[]): number {
         (res: number, item: TPrimitive) => {
             const itemNumber: number = Number(item);
 
-            return res + (isNaN(itemNumber) ? 0 : itemNumber);
+            return res + (isNaN(itemNumber)
+                ? 0
+                : itemNumber
+            );
         }, 0
     );
 }
@@ -65,6 +68,20 @@ console.log(getUnique(1, 2, 2, 3, 4, 4));
  элементы подмассивов беруться из массива data.
  Оригинальный массив не должен быть изменен.
 */
-function toMatrix(data: [], rowSize: number): [] {
-    return [];
+function toMatrix(data: TPrimitive[], rowSize: number): TPrimitive[][] {
+    rowSize = Math.ceil(rowSize);
+
+    const res: TPrimitive [][] = [];
+    const subArrLen: number = (rowSize > data.length)
+        ? data.length
+        : rowSize
+    ;
+
+    for (let i: number = 0; i < subArrLen; i++) {
+        res.push(data.slice(0, subArrLen));
+    }
+
+    return res;
 }
+
+console.log(toMatrix([1, 2, 3, 4, 5], 3));
