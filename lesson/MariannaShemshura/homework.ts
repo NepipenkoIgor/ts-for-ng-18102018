@@ -1,3 +1,6 @@
+type TPrimitive = string | number | null | boolean | undefined;
+type TPrimitiveArray = TPrimitive[];
+
 // 1)
 
 function isInArray(arr: (number | string)[], ...items: (number | string)[]): boolean {
@@ -22,17 +25,15 @@ function summator(...args: (number | string)[]): number {
 
 
 // 3)
-type TPrimitive = string | number | null | boolean | undefined;
-type TPrimitiveArray = TPrimitive[];
 
 function getUnique(...items: TPrimitiveArray): TPrimitiveArray {
     return items.filter((item: TPrimitive, i: number, a: TPrimitiveArray) => a.indexOf(item) === i);
 }
 
 // 4)
-function toMatrix(data: TPrimitiveArray, rowSize: number):  TPrimitiveArray {
+function toMatrix(data: TPrimitiveArray, rowSize: number):  TPrimitive[][] {
     let i: number = 0;
-    const result = [];
+    const result: TPrimitive[][] = [];
     for (i; i < data.length; i += rowSize) {
         result.push(data.slice(i, i + rowSize));
     }
