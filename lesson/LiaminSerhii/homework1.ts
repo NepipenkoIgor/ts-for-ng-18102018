@@ -48,15 +48,6 @@ console.log(inArray([3, 2], '3', 2)); // false
  Аргументы могут быть либо строкового либо числового типа. Количество их не ограничено
 */
 
-function summator<T extends number | string | undefined>(...args: T[]): T {
-    if (args.length) {
-        var res: T;
-        for (const item of args) {
-            res += item;
-        }
-        return res;
-    }
-
-    return;
-    // return args.reduce((accumulator: T, currentValue: T) => accumulator + currentValue);
+function summator<T extends number | string>(...args: T[]): T {
+    return args.reduce((accumulator: T, currentValue: T) => accumulator + currentValue, 0);
 }
