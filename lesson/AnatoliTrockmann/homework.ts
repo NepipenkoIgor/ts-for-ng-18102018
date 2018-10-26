@@ -6,7 +6,7 @@ export function summator(...args: StringOrNumber[]): number {
         if (isNaN(value)) {
             value = 0;
         }
-        return sum += value;
+        return sum + value;
     }, 0);
 }
 
