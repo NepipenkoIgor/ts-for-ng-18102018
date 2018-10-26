@@ -9,3 +9,9 @@ export function summator(...args: StringOrNumber[]): number {
         return sum += value;
     }, 0);
 }
+
+type StringOrNumberOrBoolean = StringOrNumber | boolean;
+export function getUnique(...args: StringOrNumberOrBoolean[]): StringOrNumberOrBoolean[] {
+    const uniqueValues: Set<StringOrNumberOrBoolean> = new Set(args);
+    return [...uniqueValues];
+}
