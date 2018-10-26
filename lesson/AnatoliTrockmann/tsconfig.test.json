@@ -3,7 +3,6 @@
   "compilerOptions": {
     "target": "es6",
     "types": ["jasmine"],
-    "lib": ["es2015", "dom"],
     "sourceMap": true
   },
   "include": [
