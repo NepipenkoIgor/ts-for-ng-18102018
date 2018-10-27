@@ -15,3 +15,19 @@ export function getUnique(...args: StringOrNumberOrBoolean[]): StringOrNumberOrB
     const uniqueValues: Set<StringOrNumberOrBoolean> = new Set(args);
     return [...uniqueValues];
 }
+
+export function isInArray(
+        arr: StringOrNumberOrBoolean[],
+        ...args: StringOrNumberOrBoolean[]): boolean {
+
+    return args.every(
+        (current: StringOrNumberOrBoolean) => isIncluded(current, arr)
+    );
+}
+
+function isIncluded(
+        value: StringOrNumberOrBoolean,
+        arr: StringOrNumberOrBoolean[]): boolean {
+    // return arr.indexOf(value) >= 0;
+    return arr.includes(value);
+}
