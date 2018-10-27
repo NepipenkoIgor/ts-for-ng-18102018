@@ -1,5 +1,6 @@
 "use strict";
-//1 exercise
+// 1 exercise
+Object.defineProperty(exports, "__esModule", { value: true });
 function isInArray(firstArg, ...someArg) {
     let isTrue = true;
     for (let x = 0; x < someArg.length; x++) {
@@ -9,39 +10,40 @@ function isInArray(firstArg, ...someArg) {
     }
     return isTrue;
 }
-console.log('1 exercise : isInArray - ' + isInArray(['1', 2, 3], '1', 44));
-//2 exercise
-// with for
-// function summator(...numbers: (string|number)[]) {
-//     let aggregateNumber:number = 0;
-//
-//     for (var i = 0; i < numbers.length; i++)
-//         aggregateNumber += +numbers[i];
-//     return aggregateNumber;
-// }
-//with reduce
+exports.isInArray = isInArray;
+// 2 exercise
 function summator(...numbers) {
-    return numbers.reduce(function (a, b) { return +a + +b; });
+    return numbers.reduce((a, b) => {
+        if (typeof b === 'string') {
+            const num = Number(b);
+            if (!Number.isNaN(num)) {
+                a += num;
+            }
+        }
+        else {
+            a += b;
+        }
+        return a;
+    }, 0);
 }
-console.log('2 exercise : Sum is ' + summator(1, 5, '200'));
-//3 exercise
+exports.summator = summator;
+// 3 exercise
 function getUnique(...someZnach) {
-    let someZnachArr = [];
+    const someZnachArr = [];
     let uniq;
-    for (let x = 0; x < someZnach.length; x++)
+    for (let x = 0; x < someZnach.length; x++) {
         someZnachArr.push(someZnach[x]);
+    }
     uniq = someZnachArr.filter((v, i, a) => a.indexOf(v) === i);
     return uniq;
 }
-console.log('3 exercise : Unique Arrey is: ');
-console.log(getUnique(1, 3, 3, true, 'four', 1));
-//4 exercise
+exports.getUnique = getUnique;
+// 4 exercise
 function toMatrix(data, rowSize) {
-    let someMatrixArr = [];
+    const someMatrixArr = [];
     for (let x = 0; x < Math.ceil(data.length / rowSize); x++) {
         someMatrixArr[x] = data.slice((x * rowSize), (x * rowSize) + rowSize);
     }
     return someMatrixArr;
 }
-console.log('4 exercise : New arrey is: ');
-console.log(toMatrix([1, 2, true, 44, 5, 8, 98, 'yes'], 2));
+exports.toMatrix = toMatrix;
