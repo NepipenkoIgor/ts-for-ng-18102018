@@ -5,6 +5,6 @@
     "sourceMap": true
   },
   "include": [
-    "./homework.spec.ts"
+    "./src/homework.spec.ts"
   ]
 }
