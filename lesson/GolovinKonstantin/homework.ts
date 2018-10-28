@@ -1,44 +1,44 @@
 type TSome = number | string | boolean;
 type TStrinber = number | string;
 
-function isInArray(arr: TSome [], ...elems: TSome []): boolean {
-    for (const item of [...elems]) {
+export function isInArray(arr: TSome [], ...elems: TSome []): boolean {
+    for (const item of elems) {
         if (arr.indexOf(item) < 0) { return false; }
     }
     return true;
 }
 
-function summator(...elems: TStrinber []): TStrinber {
-    if ([...elems].length === 0) { return 0; }
+export function summator(...elems: TStrinber []): TStrinber {
+    if (elems.length === 0) { return 0; }
 
-    if (typeof [...elems][0] === 'number') {
+    if (typeof elems[0] === 'number') {
         let total: number = 0;
-        for (const item of [...elems]) {
+        for (const item of elems) {
             if (typeof item === 'number') {
                 total += item;
-            } else { throw new Error('Аргументы должны быть одного типа'); }
+            } else { throw new Error('Invalid argument types'); }
         }
         return total;
     } else {
         let total: string = '';
-        for (const item of [...elems]) {
+        for (const item of elems) {
             if (typeof item === 'string') {
                 total += item;
-            } else { throw new Error('Аргументы должны быть одного типа'); }
+            } else { throw new Error('Invalid argument types'); }
         }
         return total;
     }
 }
 
-function getUnique(...elems: TSome[]): TSome [] {
+export function getUnique(...elems: TSome[]): TSome [] {
     const res: TSome[] = [];
-    for (const item of [...elems]) {
+    for (const item of elems) {
         if (res.indexOf(item) < 0) { res.push(item); }
     }
     return res;
 }
 
-function toMatrix(data: TSome[], rowSize: number): TSome [][] {
+export function toMatrix(data: TSome[], rowSize: number): TSome [][] {
     const res: TSome [][] = [];
     const len: number = Math.ceil(data.length / rowSize);
     for (let i: number = 0; i < len; i++) {
