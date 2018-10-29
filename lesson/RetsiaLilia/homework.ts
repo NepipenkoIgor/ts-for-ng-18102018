@@ -4,15 +4,22 @@ type TStrNum = string | number
 type TStrNumArray = TStrNum[]
 type TStrNumMultiLevelArray = TStrNum[][]
 
-function isInArray(dataArray: TStrNumArray, ...items: TStrNumArray): boolean {
-  var uniqueArray = new Set(items)
-  if (uniqueArray.size === dataArray.length) {
-    return true
+export function isInArray(
+  dataArray: TStrNumArray,
+  ...items: TStrNumArray
+): boolean {
+  for (let i = 1; i < items.length; i++) {
+    // if (dataArray.includes(items[i])) {
+    //     return false
+    //   }
+    if (dataArray.indexOf(items[i]) == -1) {
+      return false
+    }
   }
-  return false
+  return true
 }
 
-function summator(...items: TStrNumArray): number {
+export function summator(...items: TStrNumArray): number {
   return items.reduce((accumulator: number, currentValue: TStrNum) => {
     let number = Number(currentValue)
     if (isNaN(number)) {
@@ -23,12 +30,15 @@ function summator(...items: TStrNumArray): number {
   }, 0)
 }
 
-function getUniqueArr(...items: TPrimitiveArray): TPrimitiveArray {
+export function getUniqueArr(...items: TPrimitiveArray): TPrimitiveArray {
   let uniqueArray = new Set(items)
   return [...uniqueArray]
 }
 
-function toMatrix(data: TStrNumArray, rowSize: number): TStrNumMultiLevelArray {
+export function toMatrix(
+  data: TStrNumArray,
+  rowSize: number
+): TStrNumMultiLevelArray {
   let result: TStrNumMultiLevelArray = []
   for (let i: number = 0; i < Math.ceil(data.length / rowSize); i++) {
     let arr: TStrNumArray = data.slice(i * rowSize, i * rowSize + rowSize)
