@@ -31,11 +31,9 @@ export function summator(...elems: TStrinber []): TStrinber {
 }
 
 export function getUnique(...elems: TSome[]): TSome [] {
-    const res: TSome[] = [];
-    for (const item of elems) {
-        if (res.indexOf(item) < 0) { res.push(item); }
-    }
-    return res;
+    const uniqSet: Set<TSome> = new Set();
+    elems.forEach((x: TSome) => { uniqSet.add(x); });
+    return Array.from(uniqSet);
 }
 
 export function toMatrix(data: TSome[], rowSize: number): TSome [][] {
