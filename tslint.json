@@ -1,6 +1,7 @@
 {
   "rules": {
     // TypeScript Specific
+    "ordered-imports": false,
     "member-access": [
       true,
       "check-accessor",
