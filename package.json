@@ -34,7 +34,5 @@
   },
   "homepage": "https://github.com/AnastasiyaTer/ts-for-ng-18102018#readme",
   "description": "",
-  "pre-commit": [
-
-  ]
+  "pre-commit": []
 }
