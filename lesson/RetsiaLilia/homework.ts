@@ -8,11 +8,11 @@ export function isInArray(
   dataArray: TStrNumArray,
   ...items: TStrNumArray
 ): boolean {
-  for (let i = 1; i < items.length; i++) {
+  for (let i: number = 1; i < items.length; i++) {
     // if (dataArray.includes(items[i])) {
     //     return false
     //   }
-    if (dataArray.indexOf(items[i]) == -1) {
+    if (dataArray.indexOf(items[i]) === -1) {
       return false
     }
   }
@@ -21,27 +21,26 @@ export function isInArray(
 
 export function summator(...items: TStrNumArray): number {
   return items.reduce((accumulator: number, currentValue: TStrNum) => {
-    let number = Number(currentValue)
-    if (isNaN(number)) {
+    const currNumber: number = Number(currentValue)
+    if (isNaN(Number(currentValue))) {
       return accumulator
     } else {
-      return accumulator + number
+      return accumulator + currNumber
     }
   }, 0)
 }
 
 export function getUniqueArr(...items: TPrimitiveArray): TPrimitiveArray {
-  let uniqueArray = new Set(items)
-  return [...uniqueArray]
+  return [...new Set(items)]
 }
 
 export function toMatrix(
   data: TStrNumArray,
   rowSize: number
 ): TStrNumMultiLevelArray {
-  let result: TStrNumMultiLevelArray = []
+  const result: TStrNumMultiLevelArray = []
   for (let i: number = 0; i < Math.ceil(data.length / rowSize); i++) {
-    let arr: TStrNumArray = data.slice(i * rowSize, i * rowSize + rowSize)
+    const arr: TStrNumArray = data.slice(i * rowSize, i * rowSize + rowSize)
     result.push(arr)
   }
   return result

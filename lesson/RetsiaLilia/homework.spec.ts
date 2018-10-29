@@ -1,4 +1,4 @@
-import { isInArray, summator, getUniqueArr, toMatrix } from './homework'
+import { getUniqueArr, isInArray, summator, toMatrix } from './homework'
 
 describe('the check if an unique array', function() {
   it('Expects true if arguments in array', function() {
