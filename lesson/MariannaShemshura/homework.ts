@@ -3,35 +3,36 @@ type TPrimitiveArray = TPrimitive[];
 
 // 1)
 
-function isInArray(arr: TPrimitive[], ...items: TPrimitive[]): boolean {
+export function isInArray(arr: TPrimitive[], ...items: TPrimitive[]): boolean {
         return items.filter((item: TPrimitive) => {
             return !(arr.indexOf(item) > -1);
         }).length === 0;
 }
 
 // 2
-function summator(...args: (number | string)[]): number {
-    let result: number = 0;
-    args.forEach((item: string | number) => {
-        if (typeof item === 'string') {
-            item = parseFloat(item);
+export function summator(...args: (number | string)[]): number {
+    return args.reduce((result: number, current: (number | string)) => {
+        if (typeof current === 'string') {
+            const num: number = Number(current);
+            if (!Number.isNaN(num)) {
+                result += num;
+            }
+        } else {
+            result += current;
         }
-        if (!isNaN(item)) {
-            result += item;
-        }
-    });
-    return result;
+        return result;
+    }, 0);
 }
 
 
 // 3)
 
-function getUnique(...items: TPrimitiveArray): TPrimitiveArray {
-    return items.filter((item: TPrimitive, i: number, a: TPrimitiveArray) => a.indexOf(item) === i);
+export function getUnique(...items: TPrimitiveArray): TPrimitiveArray {
+    return [...new Set(items)];
 }
 
 // 4)
-function toMatrix(data: TPrimitiveArray, rowSize: number):  TPrimitive[][] {
+export function toMatrix(data: TPrimitiveArray, rowSize: number):  TPrimitive[][] {
     let i: number = 0;
     const result: TPrimitive[][] = [];
     for (i; i < data.length; i += rowSize) {
