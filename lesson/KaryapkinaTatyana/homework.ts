@@ -1,46 +1,41 @@
 // Функция 1
 type strnum = string | number;
-function isInArray(arr: strnum[], ...args: strnum[]): boolean {
-    for (let i = 0; i < args.length; i++) {
-        if (arr.indexOf(args[i]) == -1) { return false; }
+export function isInArray(arr: strnum[], ...args: strnum[]): boolean {
+    for (let i: number = 0; i < args.length; i++) {
+        if (arr.indexOf(args[i]) === -1) {
+            return false;
+        }
     }
     return true;
 }
-isInArray([1, 'hello', 3, 'world', 5, 8, 90], 90, 'world', 3, 'hello', 5, 8);
 
 // Функция 2
-type str_num = string | number;
-function summator(...args: str_num[]): number {
-    let sum: number = 0;
-    for (const arg of args) {
-        if (typeof arg == 'string') {
-            sum += parseFloat(arg);
+export function summator(...args: strnum[]): number {
+    return args.reduce((sum: number, currentElem: strnum) => {
+        if (typeof currentElem === 'string') {
+            const num: number = Number(currentElem);
+            if (!Number.isNaN(num)) {
+                sum += num;
+            }
         } else {
-            sum += arg;
+            sum += currentElem;
         }
-    }
-    return sum;
+        return sum;
+    }, 0);
 }
-summator(1, 2, 3, 4, 5);
 
 // Функция 3
-function getUnique(arr: ReadonlyArray<number> | ReadonlyArray<string>): number | string[] {
-    const obj: any = {};
-    for (let i = 0; i < arr.length; i++) {
-        const a = arr[i];
-        obj[a] = true;
-    }
-    return Object.keys(obj);
+export function getUnique(...args: strnum[]): strnum[] {
+    const result: Set<strnum> = new Set(args);
+    return [...result];
 }
-getUnique(['h', 'w', 'h', 'h', 'w', ]);
 
 // Функция 4
-type strNum = string | number;
-function toMatrix(data: strNum[], rowSize: number) {
-    const result = [];
-    for (let i = 0; i < Math.ceil(data.length / rowSize); i++) {
-        result[i] = data.slice((i * rowSize), (i * rowSize) + rowSize);
+export function toMatrix(data: strnum[], rowSize: number): strnum[][] {
+    const result: strnum[][] = [];
+    const len: number = Math.ceil(data.length / rowSize);
+    for (let i: number = 0; i < len; i++) {
+        result.push(data.slice(i * rowSize, (i + 1) * rowSize));
     }
     return result;
 }
-toMatrix(['hello', 2, 'string', '22', 34, 'world'], 3);
