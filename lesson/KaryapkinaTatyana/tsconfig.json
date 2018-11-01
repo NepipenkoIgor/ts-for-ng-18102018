@@ -4,7 +4,8 @@
     "target": "es6",
     "types": ["jasmine"],
     "lib": ["dom", "es6"],
-    "sourceMap": true
+    "sourceMap": true,
+    "noEmit": false,
   },
   "include": [
     "**/*.ts"
