@@ -31,7 +31,7 @@
       true,
       "call-signature",
       "parameter",
-      "arrow-parameter",
+      // "arrow-parameter",
       "property-declaration",
       "variable-declaration",
       "member-variable-declaration"
@@ -152,7 +152,7 @@
       "check-operator",
       "check-separator",
       "check-type",
-      "check-module"
+      // "check-module"
     ],
     "ordered-imports": [
       true,
