@@ -65,6 +65,6 @@
      "emitDecoratorMetadata": true         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "lesson/class-work.ts"
+    "rxjs-lesson/class-work.ts"
   ]
 }
