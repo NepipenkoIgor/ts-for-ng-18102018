@@ -47,3 +47,4 @@ function toMatrix(data, rowSize) {
     return someMatrixArr;
 }
 exports.toMatrix = toMatrix;
+//# sourceMappingURL=homework.js.map
