@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "target": "es6",
+      "types" : ["jasmine"],
+      "sourceMap": true
+    },
+    "include": [
+      "./homework.spec.ts"
+    ]
+  }
