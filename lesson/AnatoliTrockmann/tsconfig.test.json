@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jasmine"],
+    "sourceMap": true
+  },
+  "include": [
+    "./src/homework.spec.ts"
+  ]
+}
